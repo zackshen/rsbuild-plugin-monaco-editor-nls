@@ -1,9 +1,10 @@
 {
-  "name": "rsbuild-plugin-example",
-  "version": "0.0.0",
-  "repository": "https://github.com/rspack-contrib/rsbuild-plugin-template",
+  "name": "rsbuild-plugin-monaco-editor-nls",
+  "version": "0.1.0",
+  "repository": "https://github.com/zackshen/rsbuild-plugin-monaco-editor-nls",
   "license": "MIT",
   "type": "module",
+  "author": { "name": "Zack Shen", "url": "https://github.com/zackshen" },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -35,10 +36,12 @@
     "playwright": "^1.47.1",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.0",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2"
   },
   "peerDependencies": {
-    "@rsbuild/core": "1.x || ^1.0.1-beta.0"
+    "@rsbuild/core": "1.x || ^1.0.1-beta.0",
+    "vscode-loc.git": "git+https://github.com/microsoft/vscode-loc.git"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {

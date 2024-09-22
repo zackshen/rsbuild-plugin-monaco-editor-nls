@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "baseUrl": "./",
-    "target": "ES2020",
+    "baseUrl": ".",
+    "target": "ESNext",
     "lib": ["DOM", "ESNext"],
-    "module": "Node16",
+    "module": "ESNext",
     "strict": true,
     "declaration": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "moduleResolution": "Node16"
+    "moduleResolution": "Bundler",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }

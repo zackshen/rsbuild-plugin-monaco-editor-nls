@@ -1,16 +1,33 @@
+import path from 'node:path';
+import { Languages } from '@/const';
 import type { RsbuildPlugin } from '@rsbuild/core';
+import type { PluginMonacoEditorNlsOptions } from './types';
 
-export type PluginExampleOptions = {
-  foo?: string;
-  bar?: boolean;
-};
+export { Languages };
+export type { PluginMonacoEditorNlsOptions };
 
-export const pluginExample = (
-  options: PluginExampleOptions = {},
+export const pluginMonacoEditorNls = (
+  options: PluginMonacoEditorNlsOptions = { locale: Languages.zh_hans },
 ): RsbuildPlugin => ({
-  name: 'plugin-example',
+  name: 'plugin-monaco-editor-nls',
 
-  setup() {
-    console.log('Hello Rsbuild!', options);
+  setup(api) {
+    api.modifyBundlerChain((chain) => {
+      chain.module
+        .rule('monaco-editor-localize-transform')
+        .test(/monaco-editor[\\\/]esm[\\\/]vs.+\.js/)
+        .use('monaco-editor-localize-transform')
+        .loader(path.resolve(__dirname, 'monaco-editor-transform-localize.js'))
+        .options(options)
+        .end();
+
+      chain.module
+        .rule('monaco-editor-nls')
+        .test(/monaco-editor\/esm\/vs\/nls.js$/)
+        .use('monaco-editor-nls')
+        .loader(path.resolve(__dirname, 'monaco-editor-nls-loader.js'))
+        .options(options)
+        .end();
+    });
   },
 });

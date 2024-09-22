@@ -1,0 +1,16 @@
+export enum Languages {
+  cs = 'cs',
+  de = 'de',
+  es = 'es',
+  fr = 'fr',
+  it = 'it',
+  ja = 'ja',
+  ko = 'ko',
+  pl = 'pl',
+  pt_br = 'pt-BR',
+  qps_ploc = 'qps-ploc',
+  ru = 'ru',
+  tr = 'tr',
+  zh_hans = 'zh-hans',
+  zh_hant = 'zh-hant',
+}
