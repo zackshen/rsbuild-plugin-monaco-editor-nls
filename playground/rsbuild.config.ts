@@ -1,6 +1,13 @@
 import { defineConfig } from '@rsbuild/core';
-import { pluginExample } from '../src';
+import { pluginReact } from '@rsbuild/plugin-react';
+import {
+  Languages,
+  pluginMonacoEditorNls,
+} from 'rsbuild-plugin-monaco-editor-nls';
 
 export default defineConfig({
-  plugins: [pluginExample()],
+  plugins: [
+    pluginReact(),
+    pluginMonacoEditorNls({ locale: Languages.zh_hant }),
+  ],
 });
