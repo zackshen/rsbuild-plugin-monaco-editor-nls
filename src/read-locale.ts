@@ -1,6 +1,6 @@
-import type { Languages } from '@/const';
 import fs from 'node:fs';
 import path from 'node:path';
+import type { Languages } from '@/const';
 
 let parsedLocaleData: Record<string, Record<string, string>> | null = null;
 
