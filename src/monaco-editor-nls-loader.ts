@@ -1,22 +1,12 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { Languages } from '@/const';
+import { readRawLocalizedFile } from './read-locale';
 import type { PluginMonacoEditorNlsOptions } from './types';
-
-function readLocalizedFile(locale: Languages) {
-  const localePath = path.resolve(__dirname, 'locales', `${locale}.json`);
-  if (!fs.existsSync(localePath)) {
-    throw new Error(`Locale file not found: ${locale}`);
-  }
-  const content = fs.readFileSync(localePath, 'utf8');
-  return content;
-}
 
 export default function monacoEditorNlsLoader() {
   //@ts-ignore
   const options: PluginMonacoEditorNlsOptions = this.getOptions();
   const locale = options.locale ?? Languages.en_gb;
-  const contents = readLocalizedFile(locale);
+  const contents = readRawLocalizedFile(locale);
   return getLocalizeCode(contents, locale);
 }
 

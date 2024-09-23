@@ -8,6 +8,6 @@ import {
 export default defineConfig({
   plugins: [
     pluginReact(),
-    pluginMonacoEditorNls({ locale: Languages.zh_hant }),
+    pluginMonacoEditorNls({ locale: Languages.zh_hans }),
   ],
 });
