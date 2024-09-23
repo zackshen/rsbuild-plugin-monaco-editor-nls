@@ -25,7 +25,7 @@ export const pluginMonacoEditorNls = (
         .rule('monaco-editor-nls')
         .test(/monaco-editor\/esm\/vs\/nls.js$/)
         .use('monaco-editor-nls')
-        .loader(path.resolve(__dirname, 'monaco-editor-nls-loader.js'))
+        .loader(path.resolve(__dirname, 'monaco-editor-transform-nls.js'))
         .options(options)
         .end();
     });

@@ -2,10 +2,14 @@ import { Languages } from '@/const';
 import type { PluginMonacoEditorNlsOptions } from '@/types';
 import { readObjectLocaleFile } from './read-file';
 
-export default function monacoEditorLocalizedTransformLoader(code: string) {
-  //@ts-ignore
+export default function monacoEditorLocalizedTransformLoader(
+  this: {
+    getOptions: () => PluginMonacoEditorNlsOptions;
+    resourcePath: string;
+  },
+  code: string,
+) {
   const options: PluginMonacoEditorNlsOptions = this.getOptions();
-  //@ts-ignore
   const filepath = this.resourcePath;
   const localeObject = readObjectLocaleFile(
     options.locale ?? Languages.zh_hans,

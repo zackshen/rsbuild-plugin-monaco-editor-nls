@@ -2,9 +2,9 @@ import { Languages } from '@/const';
 import { readRawLocaleFile } from '@/read-file';
 import type { PluginMonacoEditorNlsOptions } from '@/types';
 
-export default function monacoEditorNlsLoader() {
-  // FIXME: remove ts-ignore
-  //@ts-ignore
+export default function monacoEditorNlsLoader(this: {
+  getOptions: () => PluginMonacoEditorNlsOptions;
+}) {
   const options: PluginMonacoEditorNlsOptions = this.getOptions();
   const locale = options.locale ?? Languages.zh_hans;
   const contents = readRawLocaleFile(locale);
@@ -87,21 +87,15 @@ function createScopedLocalize2(scope) {
 export function getNLSLanguage() {
     return "${locale}"
 }
-// export function localize(data, message, ...args) {
-//     return _format(message, args);
-// }
-// ------------------------invoke----------------------------------------
-        export function localize(path, data, defaultMessage, ...args) {
-            var key = typeof data === 'object' ? data.key : data;
-            var data = LOCALE_DATA;
-            var message = (data[path] || {})[key];
-            if (!message) {
-                message = defaultMessage;
-            }
-            return _format(message, args);
-        }
-// ------------------------invoke----------------------------------------
-
+export function localize(path, data, defaultMessage, ...args) {
+    var key = typeof data === 'object' ? data.key : data;
+    var data = LOCALE_DATA;
+    var message = (data[path] || {})[key];
+    if (!message) {
+        message = defaultMessage;
+    }
+    return _format(message, args);
+}
 export function localize2(path, data, defaultMessage, ...args) {
             var key = typeof data === 'object' ? data.key : data;
             var data = LOCALE_DATA;
