@@ -1,6 +1,6 @@
-import path from 'node:path';
 import { Languages } from '@/const';
 import type { RsbuildPlugin } from '@rsbuild/core';
+import path from 'node:path';
 import type { PluginMonacoEditorNlsOptions } from './types';
 
 export { Languages };
@@ -23,7 +23,7 @@ export const pluginMonacoEditorNls = (
 
       chain.module
         .rule('monaco-editor-nls')
-        .test(/monaco-editor\/esm\/vs\/nls.js$/)
+        .test(/monaco-editor[\\\/]esm[\\\/]vs[\\\/]nls.js$/)
         .use('monaco-editor-nls')
         .loader(path.resolve(__dirname, 'monaco-editor-transform-nls.js'))
         .options(options)
